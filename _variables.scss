@@ -1,0 +1,50 @@
+$font-weights: (
+      // - Weights: 500, 700, 800
+      "medium": 500,
+      "bold": 700,
+      "extra-bold": 800
+);
+
+// weights function
+@function weights($weight) {
+      @return map-get($font-weights, $weight)
+}
+
+// Mixin for flexbox
+@mixin flex($dir, $justify, $gap) {
+      display: flex;
+      justify-content: $justify;
+      align-items: center;
+      flex-direction: $dir;
+      gap: $gap;
+}
+
+// Text Colors
+$light-red: hsl(0, 100%, 67%);
+$orange-yellow: hsl(39, 100%, 56%);
+$green-teal: hsl(166, 100%, 37%);
+$cobalt-blue: hsl(234, 85%, 45%);
+
+
+// Neutral colors
+$white: hsl(0, 0%, 100%);
+$pale-blue: hsl(221, 100%, 96%);
+$light-lavender: hsl(241, 100%, 89%);
+$dark-gray-blue: hsl(224, 30%, 27%);
+
+// Circle gradient colors
+$violet-blue: hsla(256, 72%, 46%, 0.8);
+$persian-blue: hsla(241, 72%, 46%, 0);
+
+// Background-gradient colors
+$light-slate-blue: hsl(252 100% 67%);
+$light-royal-blue: hsl(241 81% 54% / .8);
+
+// Media breakpoints
+$mobile-bp: 375px;
+$desktop-bp: 1440px;
+
+// Typography
+// Paragraph font-size(18px => 1.125rem)
+$par-fs: 1.125rem;
+$font-f-main: 'Hanken Grotesk', sans-serif;

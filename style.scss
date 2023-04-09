@@ -1,0 +1,293 @@
+// Import variables
+@import './variables';
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+}
+
+// Let's begin with mobile
+body {
+      min-height: 100dvh;
+      @include flex(column, center, 2em);
+      font-family: $font-f-main;
+
+      img {
+            max-width: 100%;
+      }
+}
+
+.results-component {
+      $cirlce-size: 10rem;
+      width: 80%;
+      max-width: 800px;
+      margin: 1em;
+      border-radius: calc(30px - 0.5rem);
+      box-shadow: 3px 3px 10px rgb(0 0 0 / .12);
+      @include flex(column, unset, unset);
+      align-items: unset !important;
+
+      // & > * {
+      //       border: 4px saddlebrown solid;
+      // }
+      
+
+      .result-item:first-of-type {
+      border-radius: inherit;
+      outline-color: transparent;
+      @include flex(column, center, 0.5em);
+      text-align: center;
+      color: $white;
+      background: linear-gradient($light-slate-blue, $light-royal-blue);
+      flex-shrink: 1;
+}
+      .results-div  {
+            padding: 2.5em 2em;
+            .your-result {
+      color: $light-lavender;
+      font-weight: weights(bold);
+      font-size: calc($par-fs + 0.3rem);
+       }
+
+      //  Another circle selector but for flex
+      .score-div {
+            @include flex(column, center, -5em);
+            margin-block: 1em;
+            background: linear-gradient($violet-blue, $persian-blue);
+
+            .score {
+                  margin: 0;
+                  font-size: 3.5rem;
+                  font-weight: weights(extra-bold);
+            }
+
+            .total {
+                  color: $light-lavender;
+                  font-size: 1.1rem;
+            }
+      }
+
+      //  gradient circle
+      .circle {
+            width: $cirlce-size;
+            height: $cirlce-size;
+            // margin-bottom: 5em;
+            // border: 3px solid #fff;
+            border-radius: 50%;
+      }
+
+      // Satisfaction text and well done
+      .satisfaction {
+            font-size: 2rem;
+      }
+
+      .well-done {
+            opacity: 0.8;
+            font-size: 1.2rem;
+            
+      }
+      
+}
+
+      // Summary div
+      .summary-div {
+            $summary-opacity: 0.06;
+            padding: 3em 2em;
+            flex: 1;
+
+            .summary {
+                  font-size: 1.3rem;
+                  font-weight: weights(bold);
+                  color: $dark-gray-blue;
+                  margin-bottom: 0.5em;
+            }
+
+            // & >:not(p, button) {
+            //       border: 3px solid red;
+            // }
+
+            .summary-item {
+                  @include flex(row, space-between, unset);
+                  padding: 1em;
+                  border-radius: 10px;
+
+                  .summary-element {
+                        display: inherit;
+                        align-items: center;
+                        gap: 0.5em;
+                        font-weight: weights(medium);
+                        font-size: 1.1rem;
+
+                        img {
+                              width: calc(30px - 0.50rem);
+                        }
+
+                  }
+
+                  .fraction {
+                        font-weight: weights(extra-bold);
+                        color: $dark-gray-blue;
+                        .target-mark {
+                              color: $dark-gray-blue;
+                              opacity: 0.8;
+                              font-weight: 100;
+                        }
+                  }
+            }
+
+            .summary-item + .summary-item {
+                  margin-top: 1em;
+            }
+
+            // Now let's take'em individually
+            .reaction-div {
+                  // background-color: $light-red;
+                  isolation: isolate;
+                  position: relative;
+                  &::after {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: $light-red;
+                        position: absolute;
+                        inset: 0;
+                        z-index: -1;
+                        opacity: $summary-opacity;
+                        border-radius: inherit;
+                  }
+                  .reaction {
+                        color: $light-red;
+                  }
+
+            }
+
+            // Memory summary item
+            .memory-div {
+                  // background-color: $light-red;
+                  isolation: isolate;
+                  position: relative;
+                  &::after {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: $orange-yellow;
+                        position: absolute;
+                        inset: 0;
+                        z-index: -1;
+                        opacity: $summary-opacity;
+                        border-radius: inherit;
+                  }
+                  .memory {
+                        color: $orange-yellow;
+                  }
+
+            }
+
+            // Verbal summary item
+            .verbal-div {
+                  // background-color: $light-red;
+                  isolation: isolate;
+                  position: relative;
+                  &::after {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: $green-teal;
+                        position: absolute;
+                        inset: 0;
+                        z-index: -1;
+                        opacity: $summary-opacity;
+                        border-radius: inherit;
+                  }
+                  .verbal {
+                        color: $green-teal;
+                  }
+
+            }
+
+            // Visual summary item
+            .visual-div {
+                  // background-color: $light-red;
+                  isolation: isolate;
+                  position: relative;
+                  margin-bottom: 2em;
+                  &::after {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: $cobalt-blue;
+                        position: absolute;
+                        inset: 0;
+                        z-index: -1;
+                        opacity: $summary-opacity;
+                        border-radius: inherit;
+                  }
+                  .visual {
+                        color: $cobalt-blue;
+                  }
+
+            }
+
+            // Now the continue button
+            #continue-btn {
+                  width: 100%;
+                  padding: 1em 0;
+                  border-radius: 40px;
+                  border: none;
+                  color: $white;
+                  font-weight: weights(extra-bold);
+                  font-size: clamp(1.1rem, 30%, max(1rem, 2rem));
+                  background-color: $dark-gray-blue;
+                  font-family: $font-f-main;
+                  cursor: pointer;
+                  transition: opacity 300ms;
+
+                  &:hover {
+                        opacity: 0.8;
+                  }
+            }
+            
+      }
+
+}
+
+.attribution {
+      @include flex(row, center, 0.5em);
+      & > * {
+            text-align: center;
+            font-size: 1.1rem;
+            color: $dark-gray-blue;
+      }
+
+      & > * > a {
+            text-decoration: none;
+            color: $light-red;
+
+            &:hover {
+                  opacity: 0.8;
+            }
+      }
+}
+
+// Now the media query
+@media screen and (min-width: 680px){
+      .results-component {
+            // max-width: 800px !important;
+            @include flex(row, center, unset)
+      }
+
+      .result-item:first-of-type {
+            width: 50%;
+      }
+
+      .result-item:last-of-type {
+            width: 50%;
+      }
+}
+
+
+
+
+
+
+
